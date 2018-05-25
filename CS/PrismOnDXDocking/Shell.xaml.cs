@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System.ComponentModel.Composition;
+﻿using System.ComponentModel.Composition;
 using DevExpress.Xpf.Core;
 
 namespace PrismOnDXDocking {

@@ -1,16 +1,13 @@
-﻿using Microsoft.VisualBasic;
+﻿using System;
 using System.ComponentModel.Composition;
-using Microsoft.Practices.ServiceLocation;
-using PrismOnDXDocking.ExampleModule.Views;
-using PrismOnDXDocking.Infrastructure;
-using System.Collections.Generic;
 using System.Linq;
+using DevExpress.Mvvm;
+using Microsoft.Practices.ServiceLocation;
 using Prism.Mef.Modularity;
 using Prism.Modularity;
 using Prism.Regions;
-using DevExpress.Mvvm;
-using System.Windows;
-using System;
+using PrismOnDXDocking.ExampleModule.Views;
+using PrismOnDXDocking.Infrastructure;
 
 namespace PrismOnDXDocking.ExampleModule {
     [ModuleExport(typeof(ExampleModule))]

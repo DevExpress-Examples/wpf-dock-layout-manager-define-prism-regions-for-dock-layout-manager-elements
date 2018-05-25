@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace PrismOnDXDocking.Infrastructure {
 	public class MenuItem {

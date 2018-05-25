@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System;
+﻿using System;
 namespace PrismOnDXDocking.Infrastructure {
 	public static class RegionNames {
 		public const string LeftRegion = "LeftRegion";

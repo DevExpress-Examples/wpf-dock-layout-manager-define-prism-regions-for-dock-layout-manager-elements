@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 using DevExpress.Xpf.Docking;
-using PrismOnDXDocking.Infrastructure;
 using DevExpress.Xpf.Prism;
 using Prism.Mef;
 using Prism.Regions;
+using PrismOnDXDocking.Infrastructure;
 
 namespace PrismOnDXDocking {
     public class Bootstrapper : MefBootstrapper {

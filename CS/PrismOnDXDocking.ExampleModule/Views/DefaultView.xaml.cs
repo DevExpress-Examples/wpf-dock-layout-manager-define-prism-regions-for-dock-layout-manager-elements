@@ -1,8 +1,7 @@
-﻿using Microsoft.VisualBasic;
+﻿using System;
 using System.ComponentModel.Composition;
 using System.Windows.Controls;
 using PrismOnDXDocking.Infrastructure;
-using System;
 
 namespace PrismOnDXDocking.ExampleModule.Views {
     [PartCreationPolicy(CreationPolicy.NonShared), Export]

@@ -19,9 +19,9 @@
         </Style>
         <Style TargetType="dxdo:TabbedGroup" BasedOn="{StaticResource {x:Type dxdo:LayoutGroup}}"/>
     </Window.Resources>
-
+    
     <dxb:BarManager Name="BarManager">
-        <dxb:BarManager.Items>
+        <dxb:BarManager.Items>            
             <dxb:BarSubItem Name="bsFile" Content="File"/>
             <dxb:BarCheckItem Name="bMDIStyle" CategoryName="Window" Content="Use Tabbed MDI" IsThreeState="False" IsChecked="False"
                                Command="dxdo:MDIControllerCommand.ChangeMDIStyle"
@@ -69,19 +69,18 @@
                 <dxb:Bar.ItemLinks>
                     <dxb:BarSubItemLink BarItemName="bsFile"/>
                     <dxb:BarSubItemLink BarItemName="bsWindow" />
-                </dxb:Bar.ItemLinks>
+                </dxb:Bar.ItemLinks>                
             </dxb:Bar>
         </dxb:BarManager.Bars>
         <dxdo:DockLayoutManager x:Name="dockManager" ClosingBehavior="ImmediatelyRemove" AllowCustomization="False">
             <dxdo:LayoutGroup Orientation="Vertical" >
                 <dxdo:LayoutGroup ItemHeight="0.7*" Orientation="Horizontal">
                     <dxdo:LayoutGroup Name="leftGroup" prism:RegionManager.RegionName="{x:Static Infrastructure:RegionNames.LeftRegion}" ItemWidth="0.2*" />
-                    <dxdo:DocumentGroup Name="documentContainer" ItemWidth="0.6*" MDIStyle="MDI" prism:RegionManager.RegionName="{x:Static Infrastructure:RegionNames.MainRegion}"/>
+                    <dxdo:DocumentGroup Name="documentContainer" ItemWidth="0.6*" MDIStyle="MDI" prism:RegionManager.RegionName="{x:Static Infrastructure:RegionNames.MainRegion}" DestroyOnClosingChildren="False"/>
                     <dxdo:LayoutGroup Name="rightGroup" prism:RegionManager.RegionName="{x:Static Infrastructure:RegionNames.RightRegion}" ItemWidth="0.2*" />
                 </dxdo:LayoutGroup>
                 <dxdo:TabbedGroup ItemHeight="0.3*" prism:RegionManager.RegionName="{x:Static Infrastructure:RegionNames.TabRegion}" ShowTabForSinglePage="True"/>
             </dxdo:LayoutGroup>
         </dxdo:DockLayoutManager>
     </dxb:BarManager>
-    
 </dxcore:DXWindow>

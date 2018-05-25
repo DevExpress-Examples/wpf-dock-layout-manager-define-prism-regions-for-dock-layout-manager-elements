@@ -1,19 +1,19 @@
-﻿Imports Microsoft.VisualBasic
+﻿Imports System
 Imports System.ComponentModel.Composition
 Imports System.Windows.Controls
 Imports PrismOnDXDocking.Infrastructure
 
 Namespace PrismOnDXDocking.ExampleModule.Views
-	<PartCreationPolicy(CreationPolicy.NonShared), Export>
-	Partial Public Class DefaultView
+    <PartCreationPolicy(CreationPolicy.NonShared), Export> _
+    Partial Public Class DefaultView
         Inherits UserControl
         Implements IPanelInfo
 
         Public Sub New()
-			InitializeComponent()
-		End Sub
+            InitializeComponent()
+        End Sub
 
-        Public ReadOnly Property PanelCaption As String Implements IPanelInfo.PanelCaption
+        Public ReadOnly Property PanelCaption() As String
             Get
                 Return "Default View"
             End Get

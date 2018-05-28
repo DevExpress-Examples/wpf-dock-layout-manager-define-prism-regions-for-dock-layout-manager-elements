@@ -7,13 +7,15 @@ Namespace PrismOnDXDocking.Infrastructure
     Public Class MenuService
         Implements IMenuService
 
-        Private ReadOnly manager As BarManager
         Private ReadOnly bar As Bar
+        Private ReadOnly manager As BarManager
+
         <ImportingConstructor> _
         Public Sub New(ByVal shell As Shell)
-            Me.manager = shell.BarManager
-            Me.bar = shell.MainMenu
+            manager = shell.BarManager
+            bar = shell.MainMenu
         End Sub
+
         Public Sub Add(ByVal item As MenuItem)
             Dim parent As BarSubItem = GetParent(item.Parent)
             Dim button As BarButtonItem = New BarButtonItem With { _
@@ -24,7 +26,9 @@ Namespace PrismOnDXDocking.Infrastructure
             manager.Items.Add(button)
             parent.ItemLinks.Add(New BarButtonItemLink With {.BarItemName = button.Name})
         End Sub
-
+        Private Sub IMenuService_Add(ByVal item As MenuItem) Implements IMenuService.Add
+            Add(item)
+        End Sub
         Private Function GetParent(ByVal parentName As String) As BarSubItem
             For Each item As BarItem In manager.Items
                 Dim button As BarSubItem = TryCast(item, BarSubItem)

@@ -14,13 +14,15 @@ Namespace PrismOnDXDocking.ExampleModule
     Public Class ExampleModule
         Implements IModule
 
-        Private ReadOnly regionManager As IRegionManager
         Private ReadOnly menuService As IMenuService
+        Private ReadOnly regionManager As IRegionManager
+
         <ImportingConstructor> _
         Public Sub New(ByVal regionManager As IRegionManager, ByVal menuService As IMenuService)
             Me.regionManager = regionManager
             Me.menuService = menuService
         End Sub
+
         Public Sub Initialize()
             regionManager.RegisterViewWithRegion(RegionNames.TabRegion, GetType(DefaultView))
 
@@ -49,18 +51,15 @@ Namespace PrismOnDXDocking.ExampleModule
                 .Title = "New" _
             })
         End Sub
-
-        Private Sub ShowOutput()
-            Show(Of OutputView)(RegionNames.TabRegion)
-        End Sub
-        Private Sub ShowToolbox()
-            Show(Of ToolBoxView)(RegionNames.LeftRegion)
-        End Sub
-        Private Sub ShowProperties()
-            Show(Of PropertiesView)(RegionNames.RightRegion)
-        End Sub
         Private Sub AddNewDocument()
             Show(Of DocumentView)(RegionNames.MainRegion, True)
+        End Sub
+        Private Function GetView(Of T)(ByVal region As IRegion, ByRef view As T) As Boolean
+            view = region.Views.OfType(Of T)().FirstOrDefault()
+            Return view IsNot Nothing
+        End Function
+        Private Sub IModule_Initialize() Implements IModule.Initialize
+            Initialize()
         End Sub
         Private Sub Show(Of T)(ByVal regionName As String, Optional ByVal addNew As Boolean = False)
             Dim region = regionManager.Regions(regionName)
@@ -71,9 +70,14 @@ Namespace PrismOnDXDocking.ExampleModule
             End If
             region.Activate(view)
         End Sub
-        Private Function GetView(Of T)(ByVal region As IRegion, ByRef view As T) As Boolean
-            view = region.Views.OfType(Of T)().FirstOrDefault()
-            Return view IsNot Nothing
-        End Function
+        Private Sub ShowOutput()
+            Show(Of OutputView)(RegionNames.TabRegion)
+        End Sub
+        Private Sub ShowProperties()
+            Show(Of PropertiesView)(RegionNames.RightRegion)
+        End Sub
+        Private Sub ShowToolbox()
+            Show(Of ToolBoxView)(RegionNames.LeftRegion)
+        End Sub
     End Class
 End Namespace

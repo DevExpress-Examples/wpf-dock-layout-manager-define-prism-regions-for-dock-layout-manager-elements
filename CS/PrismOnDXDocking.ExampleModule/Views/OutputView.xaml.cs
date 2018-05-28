@@ -4,7 +4,7 @@ using PrismOnDXDocking.Infrastructure;
 
 namespace PrismOnDXDocking.ExampleModule.Views {
     [PartCreationPolicy(CreationPolicy.NonShared), Export]
-    public partial class OutputView : UserControl, IPanelInfo {
+    public partial class OutputView : UserControl {
         public OutputView() {
             InitializeComponent();
         }

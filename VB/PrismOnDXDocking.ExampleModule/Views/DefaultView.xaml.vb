@@ -7,7 +7,6 @@ Namespace PrismOnDXDocking.ExampleModule.Views
     <PartCreationPolicy(CreationPolicy.NonShared), Export> _
     Partial Public Class DefaultView
         Inherits UserControl
-        Implements IPanelInfo
 
         Public Sub New()
             InitializeComponent()

@@ -6,7 +6,6 @@ Namespace PrismOnDXDocking.ExampleModule.Views
     <PartCreationPolicy(CreationPolicy.NonShared), Export> _
     Partial Public Class OutputView
         Inherits UserControl
-        Implements IPanelInfo
 
         Public Sub New()
             InitializeComponent()

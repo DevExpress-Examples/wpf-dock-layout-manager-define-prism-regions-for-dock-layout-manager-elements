@@ -6,7 +6,7 @@ using PrismOnDXDocking.Infrastructure;
 
 namespace PrismOnDXDocking.ExampleModule.Views {
     [PartCreationPolicy(CreationPolicy.NonShared), Export]
-    public partial class PropertiesView : UserControl, IPanelInfo {
+    public partial class PropertiesView : UserControl {
         public PropertiesView() {
             InitializeComponent();
         }

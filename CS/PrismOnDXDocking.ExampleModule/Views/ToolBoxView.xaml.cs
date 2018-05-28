@@ -6,7 +6,7 @@ using PrismOnDXDocking.Infrastructure;
 
 namespace PrismOnDXDocking.ExampleModule.Views {
     [PartCreationPolicy(CreationPolicy.NonShared), Export]
-    public partial class ToolBoxView : UserControl, IPanelInfo {
+    public partial class ToolBoxView : UserControl {
         public ToolBoxView() {
             InitializeComponent();
         }

@@ -22,21 +22,16 @@
 // You can find sample updates and versions for different programming languages here:
 // http://www.devexpress.com/example=E3339
 
-using Microsoft.VisualBasic;
-using System;
 using System.Collections.Specialized;
 using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.Regions;
-using System.Windows.Controls;
 using DevExpress.Xpf.Docking;
-using System.Collections;
-using System.Windows;
-using Microsoft.Practices.Prism.Regions.Behaviors;
+using Prism.Regions;
 
-namespace PrismOnDXDocking.Infrastructure.Adapters {
-	[Export(typeof(TabbedGroupAdapter)), PartCreationPolicy(CreationPolicy.NonShared)]
+namespace PrismOnDXDocking.Infrastructure.Adapters
+{
+    [Export(typeof(TabbedGroupAdapter)), PartCreationPolicy(CreationPolicy.NonShared)]
 	public class TabbedGroupAdapter : RegionAdapterBase<TabbedGroup> {
- [ImportingConstructor]
+        [ImportingConstructor]
 		public TabbedGroupAdapter(IRegionBehaviorFactory behaviorFactory) : 
             base(behaviorFactory) {
 		}

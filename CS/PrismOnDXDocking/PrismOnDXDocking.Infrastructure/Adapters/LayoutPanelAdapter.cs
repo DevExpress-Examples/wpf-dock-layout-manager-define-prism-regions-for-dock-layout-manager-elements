@@ -22,16 +22,13 @@
 // You can find sample updates and versions for different programming languages here:
 // http://www.devexpress.com/example=E3339
 
-using Microsoft.VisualBasic;
 using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.Regions;
-using System.Windows.Controls;
 using DevExpress.Xpf.Docking;
-using System;
-using System.Collections.Specialized;
+using Prism.Regions;
 
-namespace PrismOnDXDocking.Infrastructure.Adapters {
-	[Export(typeof(LayoutPanelAdapter)), PartCreationPolicy(CreationPolicy.NonShared)]
+namespace PrismOnDXDocking.Infrastructure.Adapters
+{
+    [Export(typeof(LayoutPanelAdapter)), PartCreationPolicy(CreationPolicy.NonShared)]
 	public class LayoutPanelAdapter : RegionAdapterBase<LayoutPanel> {
         [ImportingConstructor]
 		public LayoutPanelAdapter(IRegionBehaviorFactory behaviorFactory) : 

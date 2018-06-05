@@ -22,17 +22,13 @@
 // You can find sample updates and versions for different programming languages here:
 // http://www.devexpress.com/example=E3339
 
-using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Practices.Prism.Regions;
 using DevExpress.Xpf.Docking;
 using System.Collections.Specialized;
 using System.ComponentModel.Composition;
+using Prism.Regions;
 
-namespace PrismOnDXDocking.Infrastructure.Adapters {
+namespace PrismOnDXDocking.Infrastructure.Adapters
+{
     [Export(typeof(DocumentGroupAdapter)), PartCreationPolicy(CreationPolicy.NonShared)]
     public class DocumentGroupAdapter : RegionAdapterBase<DocumentGroup> {
         [ImportingConstructor]

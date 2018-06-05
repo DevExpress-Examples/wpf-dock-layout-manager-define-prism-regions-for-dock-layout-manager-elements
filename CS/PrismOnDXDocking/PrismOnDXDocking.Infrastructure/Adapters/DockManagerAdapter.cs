@@ -22,17 +22,17 @@
 // You can find sample updates and versions for different programming languages here:
 // http://www.devexpress.com/example=E3339
 
-using Microsoft.VisualBasic;
 using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.Regions;
 using System.Windows.Controls;
 using DevExpress.Xpf.Docking;
 using System;
+using Prism.Regions;
 
-namespace PrismOnDXDocking.Infrastructure.Adapters {
-	[Export(typeof(DockManagerAdapter)), PartCreationPolicy(CreationPolicy.NonShared)]
+namespace PrismOnDXDocking.Infrastructure.Adapters
+{
+    [Export(typeof(DockManagerAdapter)), PartCreationPolicy(CreationPolicy.NonShared)]
 	public class DockManagerAdapter : RegionAdapterBase<DockLayoutManager> {
- [ImportingConstructor]
+        [ImportingConstructor]
 		public DockManagerAdapter(IRegionBehaviorFactory behaviorFactory) : 
             base(behaviorFactory) {
 		}

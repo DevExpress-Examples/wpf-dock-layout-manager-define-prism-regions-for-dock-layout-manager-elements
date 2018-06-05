@@ -11,10 +11,10 @@
 ```cs
 protected override RegionAdapterMappings ConfigureRegionAdapterMappings() {
     RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
-    var factory = Container.GetExportedValue&lt;IRegionBehaviorFactory&gt;();
-    mappings.RegisterMapping(typeof(LayoutPanel), AdapterFactory.Make&lt;RegionAdapterBase&lt;LayoutPanel&gt;&gt;(factory));
-    mappings.RegisterMapping(typeof(LayoutGroup), AdapterFactory.Make&lt;RegionAdapterBase&lt;LayoutGroup&gt;&gt;(factory));
-    mappings.RegisterMapping(typeof(DocumentGroup), AdapterFactory.Make&lt;RegionAdapterBase&lt;DocumentGroup&gt;&gt;(factory));
+    var factory = Container.GetExportedValue<IRegionBehaviorFactory>();
+    mappings.RegisterMapping(typeof(LayoutPanel), AdapterFactory.Make<RegionAdapterBase<LayoutPanel>>(factory));
+    mappings.RegisterMapping(typeof(LayoutGroup), AdapterFactory.Make<RegionAdapterBase<LayoutGroup>>(factory));
+    mappings.RegisterMapping(typeof(DocumentGroup), AdapterFactory.Make<RegionAdapterBase<DocumentGroup>>(factory));
     return mappings;
 }
 ```
@@ -29,3 +29,5 @@ Protected Overrides Function ConfigureRegionAdapterMappings() As RegionAdapterMa
     Return mappings
 End Function
 ```
+
+

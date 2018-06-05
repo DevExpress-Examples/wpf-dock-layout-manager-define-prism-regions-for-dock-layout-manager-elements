@@ -7,23 +7,25 @@
 <h3>Description</h3>
 
 <p>Starting with version 17.1, you can use built-in PRISM adapters from the DevExpress.Xpf.PrismAdapters.vXX.X assembly. Here is how they can be registered:</p>
-<code lang="cs">protected override RegionAdapterMappings ConfigureRegionAdapterMappings() {
+
+```cs
+protected override RegionAdapterMappings ConfigureRegionAdapterMappings() {
     RegionAdapterMappings mappings = base.ConfigureRegionAdapterMappings();
     var factory = Container.GetExportedValue&lt;IRegionBehaviorFactory&gt;();
     mappings.RegisterMapping(typeof(LayoutPanel), AdapterFactory.Make&lt;RegionAdapterBase&lt;LayoutPanel&gt;&gt;(factory));
     mappings.RegisterMapping(typeof(LayoutGroup), AdapterFactory.Make&lt;RegionAdapterBase&lt;LayoutGroup&gt;&gt;(factory));
     mappings.RegisterMapping(typeof(DocumentGroup), AdapterFactory.Make&lt;RegionAdapterBase&lt;DocumentGroup&gt;&gt;(factory));
     return mappings;
-}</code>
-<code lang="vb">Protected Overrides Function ConfigureRegionAdapterMappings() As RegionAdapterMappings
+}
+```
+
+```vb
+Protected Overrides Function ConfigureRegionAdapterMappings() As RegionAdapterMappings
 	Dim mappings As RegionAdapterMappings = MyBase.ConfigureRegionAdapterMappings()
 	Dim factory = Container.GetExportedValue(Of IRegionBehaviorFactory)()
     mappings.RegisterMapping(GetType(LayoutPanel), AdapterFactory.Make(Of RegionAdapterBase(Of LayoutPanel))(factory))
     mappings.RegisterMapping(GetType(LayoutGroup), AdapterFactory.Make(Of RegionAdapterBase(Of LayoutGroup))(factory))
     mappings.RegisterMapping(GetType(DocumentGroup), AdapterFactory.Make(Of RegionAdapterBase(Of DocumentGroup))(factory))
     Return mappings
-End Function</code>
-
-<br/>
-
-
+End Function
+```

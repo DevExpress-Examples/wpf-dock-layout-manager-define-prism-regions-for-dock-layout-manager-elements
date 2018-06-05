@@ -22,15 +22,14 @@
 // You can find sample updates and versions for different programming languages here:
 // http://www.devexpress.com/example=E3339
 
-using Microsoft.VisualBasic;
-using System;
 using System.Collections.Specialized;
 using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.Regions;
 using DevExpress.Xpf.Docking;
+using Prism.Regions;
 
-namespace PrismOnDXDocking.Infrastructure.Adapters {
-	[Export(typeof(LayoutGroupAdapter)), PartCreationPolicy(CreationPolicy.NonShared)]
+namespace PrismOnDXDocking.Infrastructure.Adapters
+{
+    [Export(typeof(LayoutGroupAdapter)), PartCreationPolicy(CreationPolicy.NonShared)]
 	public class LayoutGroupAdapter : RegionAdapterBase<LayoutGroup> {
         [ImportingConstructor]
 		public LayoutGroupAdapter(IRegionBehaviorFactory behaviorFactory) : 
@@ -45,7 +44,7 @@ namespace PrismOnDXDocking.Infrastructure.Adapters {
         }
 
         bool _lockItemsChanged;
-        bool _lockViewsChanged;
+        //bool _lockViewsChanged;
 
         void OnItemsCollectionChanged(IRegion region, LayoutGroup regionTarget, object sender, NotifyCollectionChangedEventArgs e) {
             if (_lockItemsChanged)
@@ -63,8 +62,8 @@ namespace PrismOnDXDocking.Infrastructure.Adapters {
         }
 
         void OnViewsCollectionChanged(IRegion region, LayoutGroup regionTarget, object sender, NotifyCollectionChangedEventArgs e) {
-            if (_lockViewsChanged)
-                return;
+            //if (_lockViewsChanged)
+            //    return;
 
             if (e.Action == NotifyCollectionChangedAction.Add) {
                 foreach (var view in e.NewItems) {

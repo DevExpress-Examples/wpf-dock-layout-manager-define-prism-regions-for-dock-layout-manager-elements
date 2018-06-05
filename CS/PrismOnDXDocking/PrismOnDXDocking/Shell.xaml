@@ -63,18 +63,9 @@
         </dxb:BarManager.Bars>
         <dxdo:DockLayoutManager x:Name="dockManager" >
             <dxdo:LayoutGroup Orientation="Vertical" DestroyOnClosingChildren="False">
-                <!--<dxdo:LayoutGroup ItemHeight="0.7*" Orientation="Horizontal">
-                    <dxdo:LayoutGroup Name="leftGroup" ItemWidth="0.2*" prism:RegionManager.RegionName="{x:Static Infrastructure:RegionNames.LeftRegion}" DestroyOnClosingChildren="False"/>
-                    <dxdo:DocumentGroup Name="documentContainer" ItemWidth="0.6*" MDIStyle="MDI" prism:RegionManager.RegionName="{x:Static Infrastructure:RegionNames.MainRegion}"/>
-                    <dxdo:LayoutGroup Name="rightGroup" ItemWidth="0.2*" prism:RegionManager.RegionName="{x:Static Infrastructure:RegionNames.RightRegion}" DestroyOnClosingChildren="False"/>
-                </dxdo:LayoutGroup>
-                <dxdo:TabbedGroup ItemHeight="0.3*"  prism:RegionManager.RegionName="{x:Static Infrastructure:RegionNames.TabRegion}" DestroyOnClosingChildren="False">
-                    <dxdo:LayoutPanel prism:RegionManager.RegionName="{x:Static Infrastructure:RegionNames.DefaultViewRegion}" Caption="DefaultView" AllowClose="False" AllowDrag="False"/>
-                </dxdo:TabbedGroup>-->
-
                 <dxdo:LayoutGroup ItemHeight="0.7*" Orientation="Horizontal">
                     <dxdo:LayoutGroup Name="leftGroup" prism:RegionManager.RegionName="{x:Static Infrastructure:RegionNames.LeftRegion}" ItemWidth="0.2*" DestroyOnClosingChildren="False"/>
-                    <dxdo:DocumentGroup Name="documentContainer" ItemWidth="0.6*" MDIStyle="MDI" prism:RegionManager.RegionName="{x:Static Infrastructure:RegionNames.MainRegion}"/>
+                    <dxdo:DocumentGroup Name="documentContainer" ItemWidth="0.6*" MDIStyle="MDI" prism:RegionManager.RegionName="{x:Static Infrastructure:RegionNames.MainRegion}" DestroyOnClosingChildren="False"/>
                     <dxdo:LayoutGroup Name="rightGroup" prism:RegionManager.RegionName="{x:Static Infrastructure:RegionNames.RightRegion}" ItemWidth="0.2*" DestroyOnClosingChildren="False"/>
                 </dxdo:LayoutGroup>
                 <dxdo:TabbedGroup ItemHeight="0.3*" DestroyOnClosingChildren="False" prism:RegionManager.RegionName="{x:Static Infrastructure:RegionNames.TabRegion}">

@@ -22,20 +22,18 @@
 // You can find sample updates and versions for different programming languages here:
 // http://www.devexpress.com/example=E3339
 
-using Microsoft.VisualBasic;
 using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
-using Microsoft.Practices.Prism.Modularity;
-using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.ServiceLocation;
 using PrismOnDXDocking.ExampleModule.Views;
 using PrismOnDXDocking.Infrastructure;
-using System.Collections.Generic;
-using System.Linq;
+using Prism.Modularity;
+using Prism.Regions;
+using Prism.Commands;
+using Prism.Mef.Modularity;
 
-namespace PrismOnDXDocking.ExampleModule {
-	[ModuleExport(typeof(ExampleModule))]
+namespace PrismOnDXDocking.ExampleModule
+{
+    [ModuleExport(typeof(ExampleModule))]
 	public class ExampleModule : IModule {
 		private readonly IRegionManager regionManager;
 		private readonly IMenuService menuService;

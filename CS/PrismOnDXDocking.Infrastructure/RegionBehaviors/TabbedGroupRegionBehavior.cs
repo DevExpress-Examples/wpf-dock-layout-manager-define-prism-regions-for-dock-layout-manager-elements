@@ -1,13 +1,11 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.ComponentModel.Composition;
+﻿using System.ComponentModel.Composition;
 using System.Windows;
 using DevExpress.Xpf.Docking;
-using Microsoft.Practices.Prism.Regions;
-using Microsoft.Practices.Prism.Regions.Behaviors;
+using Prism.Regions;
+using Prism.Regions.Behaviors;
 
 namespace PrismOnDXDocking.Infrastructure.Behaviors {
-	[Export(typeof(TabbedGroupRegionBehavior)), PartCreationPolicy(CreationPolicy.NonShared)]
+    [Export(typeof(TabbedGroupRegionBehavior)), PartCreationPolicy(CreationPolicy.NonShared)]
 	public class TabbedGroupRegionBehavior : RegionBehavior, IHostAwareRegionBehavior {
 		[Import]
 		public IRegionManager RegionManager { get; set; }

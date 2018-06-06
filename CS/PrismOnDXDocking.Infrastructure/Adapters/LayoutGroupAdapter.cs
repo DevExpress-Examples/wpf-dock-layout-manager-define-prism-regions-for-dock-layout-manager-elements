@@ -1,12 +1,10 @@
-using Microsoft.VisualBasic;
-using System;
 using System.Collections.Specialized;
 using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.Regions;
 using DevExpress.Xpf.Docking;
+using Prism.Regions;
 
 namespace PrismOnDXDocking.Infrastructure.Adapters {
-	[Export(typeof(LayoutGroupAdapter)), PartCreationPolicy(CreationPolicy.NonShared)]
+    [Export(typeof(LayoutGroupAdapter)), PartCreationPolicy(CreationPolicy.NonShared)]
 	public class LayoutGroupAdapter : RegionAdapterBase<LayoutGroup> {
         [ImportingConstructor]
 		public LayoutGroupAdapter(IRegionBehaviorFactory behaviorFactory) : 
@@ -44,11 +42,6 @@ namespace PrismOnDXDocking.Infrastructure.Adapters {
             if (e.Action == NotifyCollectionChangedAction.Add) {
                 foreach (var view in e.NewItems) {
                     var panel = new LayoutPanel { Content = view };
-                    if (view is IPanelInfo)
-                        panel.Caption = ((IPanelInfo)view).GetPanelCaption();
-                    else
-                        panel.Caption = "new Page";
-
                     _lockItemsChanged = true;
                     regionTarget.Items.Add(panel);
                     _lockItemsChanged = false;

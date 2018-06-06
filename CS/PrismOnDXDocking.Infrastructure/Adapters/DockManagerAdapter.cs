@@ -1,14 +1,13 @@
-﻿using Microsoft.VisualBasic;
-using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.Regions;
+﻿using System.ComponentModel.Composition;
 using System.Windows.Controls;
 using DevExpress.Xpf.Docking;
 using System;
+using Prism.Regions;
 
 namespace PrismOnDXDocking.Infrastructure.Adapters {
-	[Export(typeof(DockManagerAdapter)), PartCreationPolicy(CreationPolicy.NonShared)]
+    [Export(typeof(DockManagerAdapter)), PartCreationPolicy(CreationPolicy.NonShared)]
 	public class DockManagerAdapter : RegionAdapterBase<DockLayoutManager> {
- [ImportingConstructor]
+        [ImportingConstructor]
 		public DockManagerAdapter(IRegionBehaviorFactory behaviorFactory) : 
             base(behaviorFactory) {
 		}

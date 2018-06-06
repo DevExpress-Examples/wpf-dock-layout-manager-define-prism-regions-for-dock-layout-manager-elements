@@ -10,8 +10,8 @@ namespace PrismOnDXDocking.Infrastructure {
         private readonly Bar bar;
         [ImportingConstructor]
         public MenuService(Shell shell) {
-            this.manager = shell.BarManager;
-            this.bar = shell.MainMenu;
+            manager = shell.BarManager;
+            bar = shell.MainMenu;
         }
         public void Add(MenuItem item) {
             BarSubItem parent = GetParent(item.Parent);
@@ -19,7 +19,6 @@ namespace PrismOnDXDocking.Infrastructure {
             manager.Items.Add(button);
             parent.ItemLinks.Add(new BarButtonItemLink { BarItemName = button.Name });
         }
-
         BarSubItem GetParent(string parentName) {
             foreach(BarItem item in manager.Items) {
                 BarSubItem button = item as BarSubItem;
@@ -30,6 +29,9 @@ namespace PrismOnDXDocking.Infrastructure {
             manager.Items.Add(newParent);
             bar.ItemLinks.Add(new BarSubItemLink { BarItemName = newParent.Name });
             return newParent;
+        }
+        void IMenuService.Add(MenuItem item) {
+            Add(item);
         }
     }
 }

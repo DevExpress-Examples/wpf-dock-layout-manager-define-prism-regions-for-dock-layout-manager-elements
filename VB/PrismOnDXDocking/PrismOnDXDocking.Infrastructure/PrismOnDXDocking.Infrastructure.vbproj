@@ -118,7 +118,6 @@
     <Compile Include="My Project\AssemblyInfo.vb" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IPanelInfo.vb" />
     <Compile Include="RegionNames.vb" />
   </ItemGroup>
   <ItemGroup>

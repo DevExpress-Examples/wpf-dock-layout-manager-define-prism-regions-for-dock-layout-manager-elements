@@ -22,22 +22,21 @@
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E3339
 
-Imports Microsoft.VisualBasic
 Imports System.ComponentModel.Composition
 Imports System.Windows.Controls
-Imports PrismOnDXDocking.Infrastructure
 
 Namespace PrismOnDXDocking.ExampleModule.Views
     <PartCreationPolicy(CreationPolicy.NonShared), Export> _
     Partial Public Class OutputView
         Inherits UserControl
-        Implements IPanelInfo
 
         Public Sub New()
             InitializeComponent()
         End Sub
-        Public Function GetPanelCaption() As String
-            Return "Output"
-        End Function
+        Public ReadOnly Property PanelCaption() As String
+            Get
+                Return "Output"
+            End Get
+        End Property
     End Class
 End Namespace

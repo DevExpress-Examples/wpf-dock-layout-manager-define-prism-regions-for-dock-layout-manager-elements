@@ -22,34 +22,21 @@
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E3339
 
-Imports Microsoft.VisualBasic
-Imports System
-Imports System.Collections.Generic
-Imports System.Linq
-Imports System.Text
-Imports System.Windows
 Imports System.Windows.Controls
-Imports System.Windows.Data
-Imports System.Windows.Documents
-Imports System.Windows.Input
-Imports System.Windows.Media
-Imports System.Windows.Media.Imaging
-Imports System.Windows.Navigation
-Imports System.Windows.Shapes
 Imports System.ComponentModel.Composition
-Imports PrismOnDXDocking.Infrastructure
 
 Namespace PrismOnDXDocking.ExampleModule.Views
     <PartCreationPolicy(CreationPolicy.NonShared), Export> _
     Partial Public Class ToolBoxView
         Inherits UserControl
-        Implements IPanelInfo
 
         Public Sub New()
             InitializeComponent()
         End Sub
-        Public Function GetPanelCaption() As String
-            Return "Toolbox"
-        End Function
+        Public ReadOnly Property PanelCaption() As String
+            Get
+                Return "Toolbox"
+            End Get
+        End Property
     End Class
 End Namespace

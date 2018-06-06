@@ -45,37 +45,17 @@ Namespace PrismOnDXDocking.Infrastructure.Adapters
        End Sub
 
         Private _lockItemsChanged As Boolean
-        'bool _lockViewsChanged;
 
         Private Sub OnItemsCollectionChanged(ByVal region As IRegion, ByVal regionTarget As LayoutGroup, ByVal sender As Object, ByVal e As NotifyCollectionChangedEventArgs)
             If _lockItemsChanged Then
                 Return
             End If
-
-            'if (e.Action == NotifyCollectionChangedAction.Remove)
-            '{
-            '    _lockViewsChanged = true;
-            '    var lp = (LayoutPanel)e.OldItems[0];
-            '    var view = lp.Content;
-            '    lp.Content = null;
-            '    region.Remove(view);
-            '    _lockViewsChanged = false;
-            '}
         End Sub
 
         Private Sub OnViewsCollectionChanged(ByVal region As IRegion, ByVal regionTarget As LayoutGroup, ByVal sender As Object, ByVal e As NotifyCollectionChangedEventArgs)
-            'if (_lockViewsChanged)
-            '    return;
-
             If e.Action = NotifyCollectionChangedAction.Add Then
                 For Each view In e.NewItems
                     Dim panel = New LayoutPanel With {.Content = view}
-                    If TypeOf view Is IPanelInfo Then
-                        panel.Caption = DirectCast(view, IPanelInfo).GetPanelCaption()
-                    Else
-                        panel.Caption = "new Page"
-                    End If
-
                     _lockItemsChanged = True
                     regionTarget.Items.Add(panel)
                     _lockItemsChanged = False

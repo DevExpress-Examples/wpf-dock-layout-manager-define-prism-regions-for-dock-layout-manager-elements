@@ -95,5 +95,9 @@ Namespace PrismOnDXDocking.ExampleModule
         Private Sub AddNewDocument()
             regionManager.AddToRegion(RegionNames.MainRegion, ServiceLocator.Current.GetInstance(Of DocumentView)())
         End Sub
+
+        Private Sub IModule_Initialize() Implements IModule.Initialize
+            Initialize()
+        End Sub
     End Class
 End Namespace

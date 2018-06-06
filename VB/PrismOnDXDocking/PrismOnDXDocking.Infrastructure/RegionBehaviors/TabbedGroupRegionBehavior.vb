@@ -32,7 +32,6 @@ Namespace PrismOnDXDocking.Infrastructure.Behaviors
     <Export(GetType(TabbedGroupRegionBehavior)), PartCreationPolicy(CreationPolicy.NonShared)> _
     Public Class TabbedGroupRegionBehavior
         Inherits RegionBehavior
-        Implements IHostAwareRegionBehavior
 
         <Import> _
         Public Property RegionManager() As IRegionManager

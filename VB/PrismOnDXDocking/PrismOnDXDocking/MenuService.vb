@@ -22,7 +22,6 @@
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E3339
 
-Imports Microsoft.VisualBasic
 Imports System.ComponentModel.Composition
 Imports System.Text.RegularExpressions
 Imports DevExpress.Xpf.Bars
@@ -36,8 +35,8 @@ Namespace PrismOnDXDocking.Infrastructure
         Private ReadOnly bar As Bar
         <ImportingConstructor> _
         Public Sub New(ByVal shell As Shell)
-            Me.manager = shell.BarManager
-            Me.bar = shell.MainMenu
+            manager = shell.BarManager
+            bar = shell.MainMenu
         End Sub
         Public Sub Add(ByVal item As MenuItem)
             Dim parent As BarSubItem = GetParent(item.Parent)
@@ -49,7 +48,6 @@ Namespace PrismOnDXDocking.Infrastructure
             manager.Items.Add(button)
             parent.ItemLinks.Add(New BarButtonItemLink With {.BarItemName = button.Name})
         End Sub
-
         Private Function GetParent(ByVal parentName As String) As BarSubItem
             For Each item As BarItem In manager.Items
                 Dim button As BarSubItem = TryCast(item, BarSubItem)
@@ -65,5 +63,9 @@ Namespace PrismOnDXDocking.Infrastructure
             bar.ItemLinks.Add(New BarSubItemLink With {.BarItemName = newParent.Name})
             Return newParent
         End Function
+
+        Private Sub IMenuService_Add(ByVal item As MenuItem) Implements IMenuService.Add
+            Add(item)
+        End Sub
     End Class
 End Namespace

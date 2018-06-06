@@ -50,11 +50,6 @@ Namespace PrismOnDXDocking.Infrastructure.Adapters
                     Dim manager As DockLayoutManager = regionTarget.GetDockLayoutManager()
                     Dim panel As DocumentPanel = manager.DockController.AddDocumentPanel(regionTarget)
                     panel.Content = view
-                    If TypeOf view Is IPanelInfo Then
-                        panel.Caption = DirectCast(view, IPanelInfo).GetPanelCaption()
-                    Else
-                        panel.Caption = "new Page"
-                    End If
                     manager.DockController.Activate(panel)
                 Next view
             End If

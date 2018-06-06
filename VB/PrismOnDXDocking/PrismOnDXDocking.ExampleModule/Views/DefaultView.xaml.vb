@@ -22,10 +22,8 @@
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E3339
 
-Imports Microsoft.VisualBasic
 Imports System.ComponentModel.Composition
 Imports System.Windows.Controls
-Imports PrismOnDXDocking.Infrastructure
 
 Namespace PrismOnDXDocking.ExampleModule.Views
     <PartCreationPolicy(CreationPolicy.NonShared), Export> _
@@ -35,5 +33,10 @@ Namespace PrismOnDXDocking.ExampleModule.Views
         Public Sub New()
             InitializeComponent()
         End Sub
+        Public ReadOnly Property PanelCaption() As String
+            Get
+                Return "New Page"
+            End Get
+        End Property
     End Class
 End Namespace

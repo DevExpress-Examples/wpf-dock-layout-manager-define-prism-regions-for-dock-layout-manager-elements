@@ -7,7 +7,13 @@
                  xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
                  xmlns:Infrastructure="clr-namespace:PrismOnDXDocking.Infrastructure;assembly=PrismOnDXDocking.Infrastructure"
                  dxcore:ThemeManager.ThemeName="Office2007Blue" Title="Test Shell" Height="400" Width="700">
-
+    <Window.Resources>
+        <Style TargetType="dxdo:LayoutPanel">
+            <Setter Property="Caption" Value="{Binding Content.PanelCaption, RelativeSource={RelativeSource Self}}"/>
+            <Setter Property="AllowDrag" Value="False"/>
+        </Style>
+        <Style TargetType="dxdo:DocumentPanel" BasedOn="{StaticResource {x:Type dxdo:LayoutPanel}}"/>
+    </Window.Resources>
     <dxb:BarManager Name="BarManager">
         <dxb:BarManager.Items>            
             <dxb:BarSubItem Name="bsFile" Content="File"/>

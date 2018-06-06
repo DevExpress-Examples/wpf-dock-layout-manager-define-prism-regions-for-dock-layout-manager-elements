@@ -1,17 +1,14 @@
-﻿using Microsoft.VisualBasic;
-using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.MefExtensions.Modularity;
-using Microsoft.Practices.Prism.Modularity;
-using Microsoft.Practices.Prism.Regions;
+﻿using System.ComponentModel.Composition;
 using Microsoft.Practices.ServiceLocation;
 using PrismOnDXDocking.ExampleModule.Views;
 using PrismOnDXDocking.Infrastructure;
-using System.Collections.Generic;
-using System.Linq;
+using Prism.Modularity;
+using Prism.Regions;
+using Prism.Commands;
+using Prism.Mef.Modularity;
 
 namespace PrismOnDXDocking.ExampleModule {
-	[ModuleExport(typeof(ExampleModule))]
+    [ModuleExport(typeof(ExampleModule))]
 	public class ExampleModule : IModule {
 		private readonly IRegionManager regionManager;
 		private readonly IMenuService menuService;
@@ -23,10 +20,10 @@ namespace PrismOnDXDocking.ExampleModule {
         public ExampleModule(IRegionManager regionManager, IMenuService menuService) {
 			this.regionManager = regionManager;
             this.menuService = menuService;
-            this.showOutput = new DelegateCommand(ShowOutput);
-            this.showProperties = new DelegateCommand(ShowProperties);
-            this.showToolbox = new DelegateCommand(ShowToolbox);
-            this.newDocument = new DelegateCommand(AddNewDocument);
+            showOutput = new DelegateCommand(ShowOutput);
+            showProperties = new DelegateCommand(ShowProperties);
+            showToolbox = new DelegateCommand(ShowToolbox);
+            newDocument = new DelegateCommand(AddNewDocument);
 		}
         public void Initialize() {
             regionManager.RegisterViewWithRegion(RegionNames.DefaultViewRegion, typeof(DefaultView));
@@ -53,5 +50,9 @@ namespace PrismOnDXDocking.ExampleModule {
 		void AddNewDocument() {
 			regionManager.AddToRegion(RegionNames.MainRegion, ServiceLocator.Current.GetInstance<DocumentView>());
 		}
-	}
+
+        void IModule.Initialize() {
+            Initialize();
+        }
+    }
 }

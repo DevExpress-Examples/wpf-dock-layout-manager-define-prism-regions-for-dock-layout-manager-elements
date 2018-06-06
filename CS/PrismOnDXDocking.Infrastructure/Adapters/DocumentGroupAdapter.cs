@@ -1,12 +1,7 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Practices.Prism.Regions;
-using DevExpress.Xpf.Docking;
+﻿using DevExpress.Xpf.Docking;
 using System.Collections.Specialized;
 using System.ComponentModel.Composition;
+using Prism.Regions;
 
 namespace PrismOnDXDocking.Infrastructure.Adapters {
     [Export(typeof(DocumentGroupAdapter)), PartCreationPolicy(CreationPolicy.NonShared)]
@@ -29,9 +24,6 @@ namespace PrismOnDXDocking.Infrastructure.Adapters {
                     DockLayoutManager manager = regionTarget.GetDockLayoutManager();
                     DocumentPanel panel = manager.DockController.AddDocumentPanel(regionTarget);
                     panel.Content = view;
-                    if(view is IPanelInfo)
-                        panel.Caption = ((IPanelInfo)view).GetPanelCaption();
-                    else panel.Caption = "new Page";
                     manager.DockController.Activate(panel);
                 }
             }

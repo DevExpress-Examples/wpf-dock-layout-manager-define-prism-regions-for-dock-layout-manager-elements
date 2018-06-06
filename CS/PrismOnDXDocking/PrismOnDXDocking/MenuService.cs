@@ -22,7 +22,6 @@
 // You can find sample updates and versions for different programming languages here:
 // http://www.devexpress.com/example=E3339
 
-using Microsoft.VisualBasic;
 using System.ComponentModel.Composition;
 using System.Text.RegularExpressions;
 using DevExpress.Xpf.Bars;
@@ -34,16 +33,15 @@ namespace PrismOnDXDocking.Infrastructure {
         private readonly Bar bar;
         [ImportingConstructor]
         public MenuService(Shell shell) {
-            this.manager = shell.BarManager;
-            this.bar = shell.MainMenu;
+            manager = shell.BarManager;
+            bar = shell.MainMenu;
         }
         public void Add(MenuItem item) {
             BarSubItem parent = GetParent(item.Parent);
             BarButtonItem button = new BarButtonItem { Content = item.Title, Command = item.Command, Name = "bbi" + Regex.Replace(item.Title, "[^a-zA-Z0-9]", "") };
             manager.Items.Add(button);
             parent.ItemLinks.Add(new BarButtonItemLink { BarItemName = button.Name });
-        }
-
+        }       
         BarSubItem GetParent(string parentName) {
             foreach(BarItem item in manager.Items) {
                 BarSubItem button = item as BarSubItem;
@@ -54,6 +52,10 @@ namespace PrismOnDXDocking.Infrastructure {
             manager.Items.Add(newParent);
             bar.ItemLinks.Add(new BarSubItemLink { BarItemName = newParent.Name });
             return newParent;
+        }
+
+        void IMenuService.Add(MenuItem item) {
+            Add(item);
         }
     }
 }

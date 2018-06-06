@@ -49,9 +49,6 @@ namespace PrismOnDXDocking.Infrastructure.Adapters
                     DockLayoutManager manager = regionTarget.GetDockLayoutManager();
                     DocumentPanel panel = manager.DockController.AddDocumentPanel(regionTarget);
                     panel.Content = view;
-                    if(view is IPanelInfo)
-                        panel.Caption = ((IPanelInfo)view).GetPanelCaption();
-                    else panel.Caption = "new Page";
                     manager.DockController.Activate(panel);
                 }
             }

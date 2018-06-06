@@ -44,35 +44,16 @@ namespace PrismOnDXDocking.Infrastructure.Adapters
         }
 
         bool _lockItemsChanged;
-        //bool _lockViewsChanged;
 
         void OnItemsCollectionChanged(IRegion region, LayoutGroup regionTarget, object sender, NotifyCollectionChangedEventArgs e) {
             if (_lockItemsChanged)
                 return;
-
-            //if (e.Action == NotifyCollectionChangedAction.Remove)
-            //{
-            //    _lockViewsChanged = true;
-            //    var lp = (LayoutPanel)e.OldItems[0];
-            //    var view = lp.Content;
-            //    lp.Content = null;
-            //    region.Remove(view);
-            //    _lockViewsChanged = false;
-            //}
         }
 
         void OnViewsCollectionChanged(IRegion region, LayoutGroup regionTarget, object sender, NotifyCollectionChangedEventArgs e) {
-            //if (_lockViewsChanged)
-            //    return;
-
             if (e.Action == NotifyCollectionChangedAction.Add) {
                 foreach (var view in e.NewItems) {
                     var panel = new LayoutPanel { Content = view };
-                    if (view is IPanelInfo)
-                        panel.Caption = ((IPanelInfo)view).GetPanelCaption();
-                    else
-                        panel.Caption = "new Page";
-
                     _lockItemsChanged = true;
                     regionTarget.Items.Add(panel);
                     _lockItemsChanged = false;

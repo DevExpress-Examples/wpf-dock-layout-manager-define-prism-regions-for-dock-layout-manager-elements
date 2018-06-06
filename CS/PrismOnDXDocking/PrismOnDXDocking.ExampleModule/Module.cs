@@ -31,8 +31,7 @@ using Prism.Regions;
 using Prism.Commands;
 using Prism.Mef.Modularity;
 
-namespace PrismOnDXDocking.ExampleModule
-{
+namespace PrismOnDXDocking.ExampleModule {
     [ModuleExport(typeof(ExampleModule))]
 	public class ExampleModule : IModule {
 		private readonly IRegionManager regionManager;
@@ -75,5 +74,9 @@ namespace PrismOnDXDocking.ExampleModule
 		void AddNewDocument() {
 			regionManager.AddToRegion(RegionNames.MainRegion, ServiceLocator.Current.GetInstance<DocumentView>());
 		}
-	}
+
+        void IModule.Initialize() {
+            Initialize();
+        }
+    }
 }

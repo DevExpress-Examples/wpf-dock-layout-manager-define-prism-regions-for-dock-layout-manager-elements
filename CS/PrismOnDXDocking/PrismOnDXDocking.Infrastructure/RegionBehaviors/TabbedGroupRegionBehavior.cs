@@ -31,7 +31,7 @@ using Prism.Regions.Behaviors;
 namespace PrismOnDXDocking.Infrastructure.Behaviors
 {
     [Export(typeof(TabbedGroupRegionBehavior)), PartCreationPolicy(CreationPolicy.NonShared)]
-	public class TabbedGroupRegionBehavior : RegionBehavior, IHostAwareRegionBehavior {
+	public class TabbedGroupRegionBehavior : RegionBehavior {
 		[Import]
 		public IRegionManager RegionManager { get; set; }
 		public DependencyObject HostControl { get; set; }

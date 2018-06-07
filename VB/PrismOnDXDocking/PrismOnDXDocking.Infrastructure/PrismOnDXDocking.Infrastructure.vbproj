@@ -132,9 +132,6 @@
     <Compile Include="MenuBar\MenuItem.vb" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RegionBehaviors\TabbedGroupRegionBehavior.vb" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -1,7 +1,7 @@
 # How to define Prism regions for various DXDocking elements
 
 
-<p>This example demonstrates how to use DXDocking with PRISM. To obtain more information about how to accomplish this in a particular version, press the <strong>Show Implementation Details</strong> link.</p>
+<p>This example demonstrates how to use DXDocking with PRISM.</p>
 
 
 <h3>Description</h3>

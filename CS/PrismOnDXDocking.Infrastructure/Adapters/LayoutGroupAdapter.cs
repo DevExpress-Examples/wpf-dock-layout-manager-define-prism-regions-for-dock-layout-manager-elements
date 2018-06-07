@@ -1,12 +1,10 @@
-using Microsoft.VisualBasic;
-using System;
 using System.Collections.Specialized;
 using System.ComponentModel.Composition;
-using Microsoft.Practices.Prism.Regions;
 using DevExpress.Xpf.Docking;
+using Prism.Regions;
 
 namespace PrismOnDXDocking.Infrastructure.Adapters {
-	[Export(typeof(LayoutGroupAdapter)), PartCreationPolicy(CreationPolicy.NonShared)]
+    [Export(typeof(LayoutGroupAdapter)), PartCreationPolicy(CreationPolicy.NonShared)]
 	public class LayoutGroupAdapter : RegionAdapterBase<LayoutGroup> {
         [ImportingConstructor]
 		public LayoutGroupAdapter(IRegionBehaviorFactory behaviorFactory) : 

@@ -10,14 +10,18 @@ namespace PrismOnDXDocking.Infrastructure {
         private readonly Bar bar;
         [ImportingConstructor]
         public MenuService(Shell shell) {
-            this.manager = shell.BarManager;
-            this.bar = shell.MainMenu;
+            manager = shell.BarManager;
+            bar = shell.MainMenu;
         }
         public void Add(MenuItem item) {
             BarSubItem parent = GetParent(item.Parent);
             BarButtonItem button = new BarButtonItem { Content = item.Title, Command = item.Command, Name = "bbi" + Regex.Replace(item.Title, "[^a-zA-Z0-9]", "") };
             manager.Items.Add(button);
             parent.ItemLinks.Add(new BarButtonItemLink { BarItemName = button.Name });
+        }
+
+        void IMenuService.Add(MenuItem item) {
+            Add(item);
         }
 
         BarSubItem GetParent(string parentName) {

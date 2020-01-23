@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PrismOnDXDocking.Infrastructure</RootNamespace>
     <AssemblyName>PrismOnDXDocking.Infrastructure</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -34,25 +34,37 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v17.1">
+    <Reference Include="DevExpress.Data.v19.2">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Mvvm.v17.1">
+    <Reference Include="DevExpress.Mvvm.v19.2">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Printing.v17.1.Core">
+    <Reference Include="DevExpress.Office.v19.2.Core">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Core.v17.1">
+    <Reference Include="DevExpress.RichEdit.v19.2.Core">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Docking.v17.1">
+    <Reference Include="DevExpress.RichEdit.v19.2.Export">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Layout.v17.1.Core">
+    <Reference Include="DevExpress.Printing.v19.2.Core">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpf.NavBar.v17.1">
+    <Reference Include="DevExpress.Xpf.CodeView.v19.2">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Core.v19.2">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Docking.v19.2">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Layout.v19.2.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.NavBar.v19.2">
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />

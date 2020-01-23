@@ -3,12 +3,10 @@ using System.Text.RegularExpressions;
 using DevExpress.Xpf.Bars;
 
 namespace PrismOnDXDocking.Infrastructure {
-    [Export(typeof(IMenuService))]
     public class MenuService : IMenuService {
         private readonly Bar bar;
         private readonly BarManager manager;
 
-        [ImportingConstructor]
         public MenuService(Shell shell) {
             manager = shell.BarManager;
             bar = shell.MainMenu;

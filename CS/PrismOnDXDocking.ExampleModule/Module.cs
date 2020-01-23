@@ -1,8 +1,10 @@
 ﻿using System;
 using System.ComponentModel.Composition;
 using System.Linq;
+using CommonServiceLocator;
 using DevExpress.Mvvm;
-using Microsoft.Practices.ServiceLocation;
+using Prism.Ioc;
+//using Microsoft.Practices.ServiceLocation;
 using Prism.Mef.Modularity;
 using Prism.Modularity;
 using Prism.Regions;
@@ -10,18 +12,21 @@ using PrismOnDXDocking.ExampleModule.Views;
 using PrismOnDXDocking.Infrastructure;
 
 namespace PrismOnDXDocking.ExampleModule {
-    [ModuleExport(typeof(ExampleModule))]
-    public class ExampleModule : IModule {
-        private readonly IMenuService menuService;
-        private readonly IRegionManager regionManager;
 
-        [ImportingConstructor]
-        public ExampleModule(IRegionManager regionManager, IMenuService menuService) {
-            this.regionManager = regionManager;
+    public class ExampleModule : IModule {
+        private IMenuService menuService;
+        private IRegionManager regionManager;
+
+        public ExampleModule(IMenuService menuService)
+        {
             this.menuService = menuService;
         }
 
-        public void Initialize() {
+
+        public void OnInitialized(IContainerProvider containerProvider)
+        {
+            regionManager = containerProvider.Resolve<IRegionManager>();
+
             regionManager.RegisterViewWithRegion(RegionNames.TabRegion, typeof(DefaultView));
 
             regionManager.AddToRegion(RegionNames.LeftRegion, ServiceLocator.Current.GetInstance<ToolBoxView>());
@@ -33,6 +38,12 @@ namespace PrismOnDXDocking.ExampleModule {
             menuService.Add(new MenuItem() { Command = new DelegateCommand(ShowToolbox), Parent = "View", Title = "Toolbox" });
             menuService.Add(new MenuItem() { Command = new DelegateCommand(AddNewDocument), Parent = "File", Title = "New" });
         }
+
+        public void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            
+        }
+
         void AddNewDocument() {
             Show<DocumentView>(RegionNames.MainRegion, true);
         }
@@ -40,9 +51,9 @@ namespace PrismOnDXDocking.ExampleModule {
             view = region.Views.OfType<T>().FirstOrDefault();
             return view != null;
         }
-        void IModule.Initialize() {
-            Initialize();
-        }
+        //void Initialize() {
+        //    Initialize();
+        //}
         void Show<T>(string regionName, bool addNew = false) {
             var region = regionManager.Regions[regionName];
             T view;

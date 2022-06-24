@@ -1,17 +1,14 @@
 <!-- default badges list -->
-![](https://img.shields.io/endpoint?url=https://codecentral.devexpress.com/api/v1/VersionRange/128643433/19.2.5%2B)
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/E3339)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-# How to define Prism regions for various DXDocking elements
+
+# WPF Dock Layout Manager - Define Prism Regions for Dock Layout Manager Elements
 
 
-<p>This example demonstrates how to use DXDocking with PRISM.</p>
+This example uses the [DockLayoutManager](https://docs.devexpress.com/WPF/DevExpress.Xpf.Docking.DockLayoutManager) with PRISM.
 
-
-<h3>Description</h3>
-
-<p>Starting with version 17.1, you can use built-in PRISM adapters from the DevExpress.Xpf.PrismAdapters.vXX.X assembly. Here is how they can be registered:</p>
+The following code sample registers PRISM adapters from the `DevExpress.Xpf.PrismAdapters.vXX.X` assembly:
 
 ```cs
 protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
@@ -36,4 +33,9 @@ Protected Overrides Sub ConfigureRegionAdapterMappings(ByVal regionAdapterMappin
 End Sub
 ```
 
+<img src="https://user-images.githubusercontent.com/12169834/175349878-e1127eac-bbc2-412d-b36c-396a33b0c99f.png" width=700px/>
+
+## Documentation
+
+- [Prism Adapters](https://docs.devexpress.com/WPF/117848/common-concepts/prism-adapters?p=netframework)
 

@@ -1,9 +1,10 @@
-﻿Imports System.ComponentModel.Composition
+Imports System.ComponentModel.Composition
 Imports DevExpress.Xpf.Core
 
 Namespace PrismOnDXDocking
-    <Export> _
-    Partial Public Class Shell
+
+    <Export>
+    Public Partial Class Shell
         Inherits DXWindow
 
         Public Sub New()

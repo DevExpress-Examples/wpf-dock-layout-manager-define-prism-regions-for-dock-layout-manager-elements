@@ -1,15 +1,17 @@
-﻿Imports System.ComponentModel.Composition
+Imports System.ComponentModel.Composition
 Imports System.Windows.Controls
 
 Namespace PrismOnDXDocking.ExampleModule.Views
-    <PartCreationPolicy(CreationPolicy.NonShared), Export> _
-    Partial Public Class DefaultView
+
+    <PartCreationPolicy(CreationPolicy.NonShared), Export>
+    Public Partial Class DefaultView
         Inherits UserControl
 
         Public Sub New()
-            InitializeComponent()
+            Me.InitializeComponent()
         End Sub
-        Public ReadOnly Property PanelCaption() As String
+
+        Public ReadOnly Property PanelCaption As String
             Get
                 Return "New Page"
             End Get

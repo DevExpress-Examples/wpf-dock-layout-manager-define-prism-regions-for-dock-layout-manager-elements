@@ -1,14 +1,13 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
 Imports System.Windows
 
 Namespace PrismOnDXDocking
-    Partial Public Class App
+
+    Public Partial Class App
         Inherits Application
 
         Protected Overrides Sub OnStartup(ByVal e As StartupEventArgs)
             MyBase.OnStartup(e)
-            Dim bootstrapper As New Bootstrapper()
+            Dim bootstrapper As Bootstrapper = New Bootstrapper()
             bootstrapper.Run()
             ShutdownMode = ShutdownMode.OnMainWindowClose
         End Sub

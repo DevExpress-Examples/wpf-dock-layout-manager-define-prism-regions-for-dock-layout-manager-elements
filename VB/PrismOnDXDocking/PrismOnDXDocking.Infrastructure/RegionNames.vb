@@ -1,4 +1,4 @@
-﻿' Developer Express Code Central Example:
+' Developer Express Code Central Example:
 ' Prism - How to define Prism regions for various DXDocking elements
 ' 
 ' Since Prism RegionManager supports standard controls only, it is necessary to
@@ -21,19 +21,18 @@
 ' 
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E3339
-
-Imports Microsoft.VisualBasic
-Imports System
 Namespace PrismOnDXDocking.Infrastructure
-    Public NotInheritable Class RegionNames
 
-        Private Sub New()
-        End Sub
+    Public Module RegionNames
 
         Public Const LeftRegion As String = "LeftRegion"
+
         Public Const RightRegion As String = "RightRegion"
+
         Public Const MainRegion As String = "MainRegion"
+
         Public Const DefaultViewRegion As String = "DefaultViewRegion"
+
         Public Const TabRegion As String = "TabRegion"
-    End Class
+    End Module
 End Namespace

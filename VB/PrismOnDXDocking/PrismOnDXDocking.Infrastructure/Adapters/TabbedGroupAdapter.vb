@@ -1,4 +1,4 @@
-﻿' Developer Express Code Central Example:
+' Developer Express Code Central Example:
 ' Prism - How to define Prism regions for various DXDocking elements
 ' 
 ' Since Prism RegionManager supports standard controls only, it is necessary to
@@ -21,38 +21,41 @@
 ' 
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E3339
-
 Imports System.Collections.Specialized
 Imports System.ComponentModel.Composition
 Imports DevExpress.Xpf.Docking
 Imports Prism.Regions
 
 Namespace PrismOnDXDocking.Infrastructure.Adapters
-    <Export(GetType(TabbedGroupAdapter)), PartCreationPolicy(CreationPolicy.NonShared)> _
+
+    <Export(GetType(TabbedGroupAdapter)), PartCreationPolicy(CreationPolicy.NonShared)>
     Public Class TabbedGroupAdapter
         Inherits RegionAdapterBase(Of TabbedGroup)
 
-        <ImportingConstructor> _
+        <ImportingConstructor>
         Public Sub New(ByVal behaviorFactory As IRegionBehaviorFactory)
             MyBase.New(behaviorFactory)
         End Sub
+
         Protected Overrides Function CreateRegion() As IRegion
             Return New AllActiveRegion()
         End Function
+
         Protected Overrides Sub Adapt(ByVal region As IRegion, ByVal regionTarget As TabbedGroup)
-            AddHandler region.Views.CollectionChanged, Sub(s, e)
+            region.Views.CollectionChanged += Function(s, e)
                 OnViewsCollectionChanged(region, regionTarget, s, e)
-            End Sub
+            End Function
         End Sub
+
         Private Sub OnViewsCollectionChanged(ByVal region As IRegion, ByVal regionTarget As TabbedGroup, ByVal sender As Object, ByVal e As NotifyCollectionChangedEventArgs)
             If e.Action = NotifyCollectionChangedAction.Add Then
                 For Each view As Object In e.NewItems
-                    Dim panel As New LayoutPanel()
+                    Dim panel As LayoutPanel = New LayoutPanel()
                     panel.Content = view
                     panel.Caption = "new Page"
                     regionTarget.Items.Add(panel)
                     regionTarget.SelectedTabIndex = regionTarget.Items.Count - 1
-                Next view
+                Next
             End If
         End Sub
     End Class

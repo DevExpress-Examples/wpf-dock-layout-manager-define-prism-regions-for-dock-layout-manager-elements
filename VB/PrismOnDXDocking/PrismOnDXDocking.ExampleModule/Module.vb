@@ -1,4 +1,4 @@
-﻿' Developer Express Code Central Example:
+' Developer Express Code Central Example:
 ' Prism - How to define Prism regions for various DXDocking elements
 ' 
 ' Since Prism RegionManager supports standard controls only, it is necessary to
@@ -21,7 +21,6 @@
 ' 
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E3339
-
 Imports System.ComponentModel.Composition
 Imports Microsoft.Practices.ServiceLocation
 Imports PrismOnDXDocking.ExampleModule.Views
@@ -32,72 +31,62 @@ Imports Prism.Commands
 Imports Prism.Mef.Modularity
 
 Namespace PrismOnDXDocking.ExampleModule
-    <ModuleExport(GetType(ExampleModule))> _
+
+    <ModuleExport(GetType(ExampleModule))>
     Public Class ExampleModule
-        Implements IModule
+        Inherits IModule
 
         Private ReadOnly regionManager As IRegionManager
-        Private ReadOnly menuService As IMenuService
 
-        Private ReadOnly showOutput_Renamed As DelegateCommand
+        Private ReadOnly menuService As PrismOnDXDocking.Infrastructure.IMenuService
 
-        Private ReadOnly showProperties_Renamed As DelegateCommand
+        Private ReadOnly showOutputField As DelegateCommand
 
-        Private ReadOnly showToolbox_Renamed As DelegateCommand
+        Private ReadOnly showPropertiesField As DelegateCommand
+
+        Private ReadOnly showToolboxField As DelegateCommand
+
         Private ReadOnly newDocument As DelegateCommand
-        <ImportingConstructor> _
-        Public Sub New(ByVal regionManager As IRegionManager, ByVal menuService As IMenuService)
+
+        <ImportingConstructor>
+        Public Sub New(ByVal regionManager As IRegionManager, ByVal menuService As PrismOnDXDocking.Infrastructure.IMenuService)
             Me.regionManager = regionManager
             Me.menuService = menuService
-            Me.showOutput_Renamed = New DelegateCommand(AddressOf ShowOutput)
-            Me.showProperties_Renamed = New DelegateCommand(AddressOf ShowProperties)
-            Me.showToolbox_Renamed = New DelegateCommand(AddressOf ShowToolbox)
-            Me.newDocument = New DelegateCommand(AddressOf AddNewDocument)
+            showOutputField = New DelegateCommand(AddressOf ShowOutput)
+            showPropertiesField = New DelegateCommand(AddressOf ShowProperties)
+            showToolboxField = New DelegateCommand(AddressOf ShowToolbox)
+            newDocument = New DelegateCommand(AddressOf AddNewDocument)
         End Sub
+
         Public Sub Initialize()
-            regionManager.RegisterViewWithRegion(RegionNames.DefaultViewRegion, GetType(DefaultView))
-
-            regionManager.AddToRegion(RegionNames.LeftRegion, ServiceLocator.Current.GetInstance(Of ToolBoxView)())
-            regionManager.AddToRegion(RegionNames.RightRegion, ServiceLocator.Current.GetInstance(Of PropertiesView)())
-            regionManager.AddToRegion(RegionNames.MainRegion, ServiceLocator.Current.GetInstance(Of DocumentView)())
-
-            menuService.Add(New MenuItem() With { _
-                .Command = showOutput_Renamed, _
-                .Parent = "View", _
-                .Title = "Output" _
-            })
-            menuService.Add(New MenuItem() With { _
-                .Command = showProperties_Renamed, _
-                .Parent = "View", _
-                .Title = "Properties Window" _
-            })
-            menuService.Add(New MenuItem() With { _
-                .Command = showToolbox_Renamed, _
-                .Parent = "View", _
-                .Title = "Toolbox" _
-            })
-            menuService.Add(New MenuItem() With { _
-                .Command = newDocument, _
-                .Parent = "File", _
-                .Title = "New" _
-            })
+            regionManager.RegisterViewWithRegion(PrismOnDXDocking.Infrastructure.RegionNames.DefaultViewRegion, GetType(DefaultView))
+            regionManager.AddToRegion(PrismOnDXDocking.Infrastructure.RegionNames.LeftRegion, ServiceLocator.Current.GetInstance(Of ToolBoxView)())
+            regionManager.AddToRegion(PrismOnDXDocking.Infrastructure.RegionNames.RightRegion, ServiceLocator.Current.GetInstance(Of PropertiesView)())
+            regionManager.AddToRegion(PrismOnDXDocking.Infrastructure.RegionNames.MainRegion, ServiceLocator.Current.GetInstance(Of DocumentView)())
+            menuService.Add(New PrismOnDXDocking.Infrastructure.MenuItem() With {.Command = showOutputField, .Parent = "View", .Title = "Output"})
+            menuService.Add(New PrismOnDXDocking.Infrastructure.MenuItem() With {.Command = showPropertiesField, .Parent = "View", .Title = "Properties Window"})
+            menuService.Add(New PrismOnDXDocking.Infrastructure.MenuItem() With {.Command = showToolboxField, .Parent = "View", .Title = "Toolbox"})
+            menuService.Add(New PrismOnDXDocking.Infrastructure.MenuItem() With {.Command = newDocument, .Parent = "File", .Title = "New"})
         End Sub
 
         Private Sub ShowOutput()
-            regionManager.AddToRegion(RegionNames.TabRegion, ServiceLocator.Current.GetInstance(Of OutputView)())
-        End Sub
-        Private Sub ShowToolbox()
-            regionManager.AddToRegion(RegionNames.LeftRegion, ServiceLocator.Current.GetInstance(Of ToolBoxView)())
-        End Sub
-        Private Sub ShowProperties()
-            regionManager.AddToRegion(RegionNames.RightRegion, ServiceLocator.Current.GetInstance(Of PropertiesView)())
-        End Sub
-        Private Sub AddNewDocument()
-            regionManager.AddToRegion(RegionNames.MainRegion, ServiceLocator.Current.GetInstance(Of DocumentView)())
+            regionManager.AddToRegion(PrismOnDXDocking.Infrastructure.RegionNames.TabRegion, ServiceLocator.Current.GetInstance(Of OutputView)())
         End Sub
 
-        Private Sub IModule_Initialize() Implements IModule.Initialize
-            Initialize()
+        Private Sub ShowToolbox()
+            regionManager.AddToRegion(PrismOnDXDocking.Infrastructure.RegionNames.LeftRegion, ServiceLocator.Current.GetInstance(Of ToolBoxView)())
+        End Sub
+
+        Private Sub ShowProperties()
+            regionManager.AddToRegion(PrismOnDXDocking.Infrastructure.RegionNames.RightRegion, ServiceLocator.Current.GetInstance(Of PropertiesView)())
+        End Sub
+
+        Private Sub AddNewDocument()
+            regionManager.AddToRegion(PrismOnDXDocking.Infrastructure.RegionNames.MainRegion, ServiceLocator.Current.GetInstance(Of DocumentView)())
+        End Sub
+
+        Private Sub Initialize()
+            Me.Initialize()
         End Sub
     End Class
 End Namespace

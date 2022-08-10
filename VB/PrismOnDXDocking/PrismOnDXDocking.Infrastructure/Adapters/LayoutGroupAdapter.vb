@@ -1,4 +1,4 @@
-﻿' Developer Express Code Central Example:
+' Developer Express Code Central Example:
 ' Prism - How to define Prism regions for various DXDocking elements
 ' 
 ' Since Prism RegionManager supports standard controls only, it is necessary to
@@ -21,35 +21,35 @@
 ' 
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E3339
-
 Imports System.Collections.Specialized
 Imports System.ComponentModel.Composition
 Imports DevExpress.Xpf.Docking
 Imports Prism.Regions
 
 Namespace PrismOnDXDocking.Infrastructure.Adapters
-    <Export(GetType(LayoutGroupAdapter)), PartCreationPolicy(CreationPolicy.NonShared)> _
+
+    <Export(GetType(LayoutGroupAdapter)), PartCreationPolicy(CreationPolicy.NonShared)>
     Public Class LayoutGroupAdapter
         Inherits RegionAdapterBase(Of LayoutGroup)
 
-        <ImportingConstructor> _
+        <ImportingConstructor>
         Public Sub New(ByVal behaviorFactory As IRegionBehaviorFactory)
             MyBase.New(behaviorFactory)
         End Sub
+
         Protected Overrides Function CreateRegion() As IRegion
-             Return New AllActiveRegion()
+            Return New AllActiveRegion()
         End Function
-       Protected Overrides Sub Adapt(ByVal region As IRegion, ByVal regionTarget As LayoutGroup)
-            AddHandler region.Views.CollectionChanged, Sub(s, e) OnViewsCollectionChanged(region, regionTarget, s, e)
-            AddHandler regionTarget.Items.CollectionChanged, Sub(s, e) OnItemsCollectionChanged(region, regionTarget, s, e)
-       End Sub
+
+        Protected Overrides Sub Adapt(ByVal region As IRegion, ByVal regionTarget As LayoutGroup)
+            region.Views.CollectionChanged += Function(s, e) OnViewsCollectionChanged(region, regionTarget, s, e)
+            AddHandler regionTarget.Items.CollectionChanged, Sub(s, e) Me.OnItemsCollectionChanged(region, regionTarget, s, e)
+        End Sub
 
         Private _lockItemsChanged As Boolean
 
         Private Sub OnItemsCollectionChanged(ByVal region As IRegion, ByVal regionTarget As LayoutGroup, ByVal sender As Object, ByVal e As NotifyCollectionChangedEventArgs)
-            If _lockItemsChanged Then
-                Return
-            End If
+            If _lockItemsChanged Then Return
         End Sub
 
         Private Sub OnViewsCollectionChanged(ByVal region As IRegion, ByVal regionTarget As LayoutGroup, ByVal sender As Object, ByVal e As NotifyCollectionChangedEventArgs)
@@ -59,10 +59,10 @@ Namespace PrismOnDXDocking.Infrastructure.Adapters
                     _lockItemsChanged = True
                     regionTarget.Items.Add(panel)
                     _lockItemsChanged = False
-
                     regionTarget.SelectedTabIndex = regionTarget.Items.Count - 1
-                Next view
+                Next
             End If
+
             If e.Action = NotifyCollectionChangedAction.Remove Then
                 For Each view In e.OldItems
                     Dim viewPanel As LayoutPanel = Nothing
@@ -71,16 +71,15 @@ Namespace PrismOnDXDocking.Infrastructure.Adapters
                             viewPanel = panel
                             Exit For
                         End If
-                    Next panel
-                    If viewPanel Is Nothing Then
-                        Continue For
-                    End If
+                    Next
+
+                    If viewPanel Is Nothing Then Continue For
                     viewPanel.Content = Nothing
                     _lockItemsChanged = True
                     regionTarget.Items.Remove(viewPanel)
                     _lockItemsChanged = False
                     regionTarget.SelectedTabIndex = regionTarget.Items.Count - 1
-                Next view
+                Next
             End If
         End Sub
     End Class

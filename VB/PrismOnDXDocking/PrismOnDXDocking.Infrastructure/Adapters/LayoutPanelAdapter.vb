@@ -1,4 +1,4 @@
-﻿' Developer Express Code Central Example:
+' Developer Express Code Central Example:
 ' Prism - How to define Prism regions for various DXDocking elements
 ' 
 ' Since Prism RegionManager supports standard controls only, it is necessary to
@@ -21,29 +21,29 @@
 ' 
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E3339
-
 Imports System.ComponentModel.Composition
 Imports DevExpress.Xpf.Docking
 Imports Prism.Regions
 
 Namespace PrismOnDXDocking.Infrastructure.Adapters
-    <Export(GetType(LayoutPanelAdapter)), PartCreationPolicy(CreationPolicy.NonShared)> _
+
+    <Export(GetType(LayoutPanelAdapter)), PartCreationPolicy(CreationPolicy.NonShared)>
     Public Class LayoutPanelAdapter
         Inherits RegionAdapterBase(Of LayoutPanel)
 
-        <ImportingConstructor> _
+        <ImportingConstructor>
         Public Sub New(ByVal behaviorFactory As IRegionBehaviorFactory)
             MyBase.New(behaviorFactory)
         End Sub
+
         Protected Overrides Function CreateRegion() As IRegion
             Return New SingleActiveRegion()
         End Function
+
         Protected Overrides Sub Adapt(ByVal region As IRegion, ByVal regionTarget As LayoutPanel)
-            AddHandler region.Views.CollectionChanged, Sub(d, e)
-                If e.NewItems IsNot Nothing Then
-                    regionTarget.Content = e.NewItems(0)
-                End If
-            End Sub
+            region.Views.CollectionChanged += Function(d, e)
+                If e.NewItems IsNot Nothing Then regionTarget.Content = e.NewItems(0)
+            End Function
         End Sub
     End Class
 End Namespace

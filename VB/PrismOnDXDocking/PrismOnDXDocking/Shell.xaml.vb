@@ -1,4 +1,4 @@
-﻿' Developer Express Code Central Example:
+' Developer Express Code Central Example:
 ' Prism - How to define Prism regions for various DXDocking elements
 ' 
 ' Since Prism RegionManager supports standard controls only, it is necessary to
@@ -21,14 +21,13 @@
 ' 
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E3339
-
-Imports Microsoft.VisualBasic
 Imports System.ComponentModel.Composition
 Imports DevExpress.Xpf.Core
 
 Namespace PrismOnDXDocking
-    <Export> _
-    Partial Public Class Shell
+
+    <Export>
+    Public Partial Class Shell
         Inherits DXWindow
 
         Public Sub New()

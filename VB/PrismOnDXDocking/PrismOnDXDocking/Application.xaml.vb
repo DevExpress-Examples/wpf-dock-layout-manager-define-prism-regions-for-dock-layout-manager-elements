@@ -1,4 +1,4 @@
-﻿' Developer Express Code Central Example:
+' Developer Express Code Central Example:
 ' Prism - How to define Prism regions for various DXDocking elements
 ' 
 ' Since Prism RegionManager supports standard controls only, it is necessary to
@@ -21,18 +21,16 @@
 ' 
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E3339
-
-Imports Microsoft.VisualBasic
-Imports System
 Imports System.Windows
 
 Namespace PrismOnDXDocking
-    Partial Public Class App
+
+    Public Partial Class App
         Inherits Application
 
         Protected Overrides Sub OnStartup(ByVal e As StartupEventArgs)
             MyBase.OnStartup(e)
-            Dim bootstrapper As New Bootstrapper()
+            Dim bootstrapper As Bootstrapper = New Bootstrapper()
             bootstrapper.Run()
             ShutdownMode = ShutdownMode.OnMainWindowClose
         End Sub

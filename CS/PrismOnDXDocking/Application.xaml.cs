@@ -2,16 +2,19 @@
 using DevExpress.Xpf.Prism;
 using Prism.Ioc;
 using Prism.Modularity;
-using Prism.Regions;
+using Prism.Navigation.Regions;
 using Prism.Unity;
 using PrismOnDXDocking.Infrastructure;
-using System;
 using System.Windows;
 
 namespace PrismOnDXDocking
 {
     public partial class App : PrismApplication
     {
+        static App() {
+            DXRegionManager.PrismVersion = PrismVersion.Prism9;
+        }
+
         protected override Window CreateShell()
         {
             return Container.Resolve<Shell>();

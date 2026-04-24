@@ -1,5 +1,4 @@
-﻿using System;
-namespace PrismOnDXDocking.Infrastructure {
+﻿namespace PrismOnDXDocking.Infrastructure {
 	public static class RegionNames {
 		public const string LeftRegion = "LeftRegion";
 		public const string RightRegion = "RightRegion";

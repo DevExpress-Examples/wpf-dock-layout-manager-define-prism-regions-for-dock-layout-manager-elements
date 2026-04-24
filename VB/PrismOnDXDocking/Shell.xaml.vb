@@ -1,7 +1,13 @@
-﻿Namespace PrismOnDXDocking
-    Partial Public Class Shell
-        Public Sub New()
-            InitializeComponent()
-        End Sub
-    End Class
+﻿Imports Microsoft.VisualBasic
+Imports System.ComponentModel.Composition
+Imports DevExpress.Xpf.Core
+
+Namespace PrismOnDXDocking
+	<Export> _
+	Partial Public Class Shell
+		Inherits DXWindow
+		Public Sub New()
+			InitializeComponent()
+		End Sub
+	End Class
 End Namespace

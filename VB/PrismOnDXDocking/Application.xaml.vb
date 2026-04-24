@@ -3,7 +3,7 @@ Imports DevExpress.Xpf.Docking
 Imports DevExpress.Xpf.Prism
 Imports Prism.Ioc
 Imports Prism.Modularity
-Imports Prism.Navigation.Regions
+Imports Prism.Regions
 Imports Prism.Unity
 Imports PrismOnDXDocking.Infrastructure
 Imports System
@@ -12,25 +12,19 @@ Imports System.Windows
 Namespace PrismOnDXDocking
 	Partial Public Class App
 		Inherits PrismApplication
-
-		Shared Sub New()
-			DXRegionManager.PrismVersion = PrismVersion.Prism9
-		End Sub
-
 		Protected Overrides Function CreateShell() As Window
 			Return Container.Resolve(Of Shell)()
 		End Function
-
-		Protected Overrides Sub RegisterTypes(containerRegistry As IContainerRegistry)
+		Protected Overrides Sub RegisterTypes(ByVal containerRegistry As IContainerRegistry)
 			containerRegistry.RegisterSingleton(GetType(Shell))
 			containerRegistry.Register(Of IMenuService, MenuService)()
 		End Sub
 
-		Protected Overrides Sub ConfigureModuleCatalog(moduleCatalog As IModuleCatalog)
+		Protected Overrides Sub ConfigureModuleCatalog(ByVal moduleCatalog As IModuleCatalog)
 			moduleCatalog.AddModule(Of PrismOnDXDocking.ExampleModule.ExampleModule)()
 		End Sub
 
-		Protected Overrides Sub ConfigureRegionAdapterMappings(regionAdapterMappings As RegionAdapterMappings)
+		Protected Overrides Sub ConfigureRegionAdapterMappings(ByVal regionAdapterMappings As RegionAdapterMappings)
 			MyBase.ConfigureRegionAdapterMappings(regionAdapterMappings)
 
 			Dim factory = Container.Resolve(Of IRegionBehaviorFactory)()

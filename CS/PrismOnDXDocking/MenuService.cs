@@ -1,5 +1,6 @@
-﻿using DevExpress.Xpf.Bars;
+﻿using System.ComponentModel.Composition;
 using System.Text.RegularExpressions;
+using DevExpress.Xpf.Bars;
 
 namespace PrismOnDXDocking.Infrastructure {
     public class MenuService : IMenuService {

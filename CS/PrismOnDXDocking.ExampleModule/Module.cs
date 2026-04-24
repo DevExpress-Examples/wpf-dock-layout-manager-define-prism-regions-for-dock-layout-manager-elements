@@ -1,17 +1,21 @@
-﻿using DevExpress.Mvvm;
+﻿using System;
+using System.ComponentModel.Composition;
+using System.Linq;
+using CommonServiceLocator;
+using DevExpress.Mvvm;
 using Prism.Ioc;
+//using Microsoft.Practices.ServiceLocation;
+using Prism.Mef.Modularity;
 using Prism.Modularity;
-using Prism.Navigation.Regions;
+using Prism.Regions;
 using PrismOnDXDocking.ExampleModule.Views;
 using PrismOnDXDocking.Infrastructure;
-using System.Linq;
 
 namespace PrismOnDXDocking.ExampleModule {
 
     public class ExampleModule : IModule {
         private IMenuService menuService;
         private IRegionManager regionManager;
-        private IContainerProvider containerProvider;
 
         public ExampleModule(IMenuService menuService)
         {
@@ -21,14 +25,13 @@ namespace PrismOnDXDocking.ExampleModule {
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            this.containerProvider = containerProvider;
             regionManager = containerProvider.Resolve<IRegionManager>();
 
             regionManager.RegisterViewWithRegion(RegionNames.TabRegion, typeof(DefaultView));
 
-            regionManager.AddToRegion(RegionNames.LeftRegion, containerProvider.Resolve<ToolBoxView>());
-            regionManager.AddToRegion(RegionNames.RightRegion, containerProvider.Resolve<PropertiesView>());
-            regionManager.AddToRegion(RegionNames.MainRegion, containerProvider.Resolve<DocumentView>());
+            regionManager.AddToRegion(RegionNames.LeftRegion, ServiceLocator.Current.GetInstance<ToolBoxView>());
+            regionManager.AddToRegion(RegionNames.RightRegion, ServiceLocator.Current.GetInstance<PropertiesView>());
+            regionManager.AddToRegion(RegionNames.MainRegion, ServiceLocator.Current.GetInstance<DocumentView>());
 
             menuService.Add(new MenuItem() { Command = new DelegateCommand(ShowOutput), Parent = "View", Title = "Output" });
             menuService.Add(new MenuItem() { Command = new DelegateCommand(ShowProperties), Parent = "View", Title = "Properties Window" });
@@ -55,7 +58,7 @@ namespace PrismOnDXDocking.ExampleModule {
             var region = regionManager.Regions[regionName];
             T view;
             if(addNew || !GetView<T>(region, out view)) {
-                view = containerProvider.Resolve<T>();
+                view = ServiceLocator.Current.GetInstance<T>();
                 regionManager.AddToRegion(regionName, view);
             }
             region.Activate(view);

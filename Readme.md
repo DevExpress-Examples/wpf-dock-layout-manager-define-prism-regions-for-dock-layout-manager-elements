@@ -7,10 +7,10 @@
 
 # WPF Dock Layout Manager - Define Prism Regions for Dock Layout Manager Elements
 
-
 This example uses the [DockLayoutManager](https://docs.devexpress.com/WPF/DevExpress.Xpf.Docking.DockLayoutManager) with PRISM.
 
 The following code sample registers PRISM adapters from the `DevExpress.Xpf.PrismAdapters.vXX.X` assembly:
+
 
 ```cs
 protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)

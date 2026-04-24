@@ -37,6 +37,7 @@ End Sub
 
 <img src="https://user-images.githubusercontent.com/12169834/175349878-e1127eac-bbc2-412d-b36c-396a33b0c99f.png" width=700px/>
 
+
 ## Documentation
 
 - [Prism Adapters](https://docs.devexpress.com/WPF/117848/common-concepts/prism-adapters?p=netframework)
